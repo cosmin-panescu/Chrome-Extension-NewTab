@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  position: relative;
+}
+
+canvas {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  z-index: -999;
+}
+
+.line {
+  height: 6.5px;
+  border-radius: 10px;
+  border: none;
+  background: #fff;
+}
+
+.container {
+  min-width: 100%;
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.container > div {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.container #left {
+  padding-top: 3rem;
+}
+.container #middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container #middle .clock {
+  display: flex;
+  flex-direction: column;
+}
+.container #middle .clock h1 {
+  color: #fff;
+  font-size: 7rem;
+}
+.container #right {
+  padding-top: 3rem;
+}
+.container #right #weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container #right #weather .weather-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.container #right #weather .weather-info .temperature {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: bolder;
+}
+.container #right #weather .location {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bolder;
+}/*# sourceMappingURL=style.css.map */
