@@ -1,4 +1,5 @@
 // @import "style2.css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
 
 * {
     box-sizing: border-box;
@@ -9,6 +10,7 @@
 body {
     overflow: hidden;
     position: relative;
+    font-family: 'Poppins', sans-serif;
 }
 
 canvas {
@@ -25,6 +27,33 @@ canvas {
     background: #fff;
 }
 
+.btn {
+    padding: 5px;
+    width: 30px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border: none;
+    opacity: .1;
+    background: transparent;
+    transition: all .25s ease;
+    border-radius: 4px 15px 4px 4px;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+        opacity: .4;
+    }
+}
+
+.title {
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+
 .container {
     min-width: 100%;
     min-height: 100%;
@@ -39,6 +68,94 @@ canvas {
 
     #left {
         padding-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+
+        .title {
+            padding-bottom: 2rem;
+        }
+
+        .todo-input {
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.221);
+            padding: 0px 0px 0 10px;
+            align-items: center;
+
+            input {
+                flex: 1;
+                border: none;
+                outline: none;
+                background: transparent;
+                height: 40px;
+                font-family: 'Poppins', sans-serif;
+                color: #fff;
+                font-size: .9rem;
+                letter-spacing: .35px;
+
+                &::placeholder {
+                    opacity: .4;
+                    font-weight: 300;
+                    font-family: 'Poppins', sans-serif;
+                    color: #fff;
+                }
+            }
+
+        }
+
+        .todo-list-item {
+            width: 60%;
+            height: 25vh;
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar {
+                width: 12.5px;
+
+                &-thumb {
+                    background-color: #ffffff39;
+                    border-radius: 6px;
+                }
+            }
+
+            .todo-list {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.221);
+                margin-bottom: 10px;
+                height: 31px;
+                display: flex;
+                justify-content: space-between;
+                padding: 0px 0px 0 10px;
+                align-items: center;
+                transition: all .2s ease;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                p {
+                    overflow: scroll;
+                    white-space: nowrap;
+                    color: #ffffff;
+                    font-size: 1rem;
+                    letter-spacing: .35px;
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+                }
+
+                &:hover {
+                    // padding: 0px 10px;
+                    border-radius: 20px;
+                    background: rgba(255, 255, 255, 0.13);
+                }
+
+            }
+
+        }
     }
 
     #middle {
@@ -52,8 +169,13 @@ canvas {
 
             h1 {
                 color: #fff;
-                font-size: 7rem;
-                // text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.31);
+                font-size: 8rem;
+            }
+
+            #minute {
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
     }
@@ -72,17 +194,12 @@ canvas {
                 gap: 15px;
 
                 .temperature {
-                    font-size: 3rem;
+                    font-size: 4rem;
                     color: #fff;
                     font-weight: bolder;
                 }
             }
 
-            .location {
-                color: #fff;
-                font-size: 2rem;
-                font-weight: bolder;
-            }
         }
     }
 }

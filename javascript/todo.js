@@ -3,9 +3,9 @@ const addTaskBtn = document.getElementsByClassName("add-btn")[0];
 
 addTaskBtn.addEventListener("click", () => {
     if (inputValue.value.trim() != 0) {
-        let localItems = JSON.parse(localStorage.getItem('localItems'));
+        let localItems = JSON.parse(localStorage.getItem('localItem'));
 
-        if (localItems == null) {
+        if (localItems === null) {
             taskList = [];
         } else {
             taskList = localItems;
@@ -19,9 +19,9 @@ addTaskBtn.addEventListener("click", () => {
 })
 
 function showList() {
-    let output = '';
-    let taskListShow = document.querySelector(".todo-list-iten");
-    let localItems = JSON.parse(localStorage.getItem('localItems'));
+    let html = '';
+    let taskListShow = document.querySelector(".todo-list-item");
+    let localItems = JSON.parse(localStorage.getItem('localItem'));
 
     if (localItems == null) {
         taskList = [];
@@ -30,23 +30,23 @@ function showList() {
     }
 
     taskList.forEach((data, index) => {
-        output += `
+        html += `
             <div class="todo-list">
                 <p class="todo-text">${data}</p>
-                <button class="delete-todo" onclick="deleteItem(${index})">
-                    X
+                <button class="delete-todo btn" onClick="deleteItem(${index})">
+                    ✖
                 </button>
             </div>
         `
     });
 
-    taskListShow.innerHTML = output;
+    taskListShow.innerHTML = html;
 }
 
 showList();
 
 function deleteItem(index) {
-    let localItems = JSON.parse(localStorage.getItem('localItems'));
+    let localItems = JSON.parse(localStorage.getItem('localItem'));
 
     taskList.splice(index, 1);
 

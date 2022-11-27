@@ -28,7 +28,7 @@ window.addEventListener("load", () => {
 
                 const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
                 document.getElementById("weather").innerHTML = `
-                    <p class="location">${data.name}</p>
+                    <p class="location title">${data.name}</p>
                     <div class="weather-info">
                         <img src=${iconUrl} />
                         <p class="temperature">${Math.round(celsiusTemp)}º</p>
