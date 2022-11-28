@@ -3,7 +3,12 @@ window.addEventListener("load", () => {
     // Current time
     function getCurrentTime() {
         const date = new Date();
-        document.getElementById('hour').textContent = date.getHours();
+
+        if (date.getHours() < 10) {
+            document.getElementById('hour').textContent = `0${date.getHours()}`;
+        } else {
+            document.getElementById('hour').textContent = date.getHours();
+        }
 
         if (date.getMinutes() < 10) {
             document.getElementById('minute').textContent = `0${date.getMinutes()}`;

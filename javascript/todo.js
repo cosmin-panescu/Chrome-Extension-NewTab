@@ -1,56 +1,88 @@
-const inputValue = document.getElementsByClassName("input-value")[0];
-const addTaskBtn = document.getElementsByClassName("add-btn")[0];
+const todoInput = document.querySelector(".todo-input");
+const todoForm = document.querySelector(".form");
+const todoList = document.querySelector(".todo-list");
 
-addTaskBtn.addEventListener("click", () => {
-    if (inputValue.value.trim() != 0) {
-        let localItems = JSON.parse(localStorage.getItem('localItem'));
+document.addEventListener("DOMContentLoaded", getLocalStorage);
+todoForm.addEventListener("submit", addTodo);
+todoList.addEventListener("dblclick", deleteTask);
 
-        if (localItems === null) {
-            taskList = [];
-        } else {
-            taskList = localItems;
-        }
+function addTodo(e) {
+    e.preventDefault();
+    
+    if (todoInput.value.trim() != '') {
+        const todoDiv = document.createElement("div");
+        todoDiv.classList.add("todo");
 
-        taskList.push(inputValue.value);
-        localStorage.setItem('localItem', JSON.stringify(taskList));
+        const newTodo = document.createElement("li");
+        newTodo.innerHTML = todoInput.value;
+        newTodo.classList.add("todo-item");
+
+        todoDiv.appendChild(newTodo);
+
+        // add task to localStorage
+        saveLocalStorage(todoInput.value);
+
+        todoList.appendChild(todoDiv);
+
+        todoInput.value = "";
     }
-
-    showList();
-})
-
-function showList() {
-    let html = '';
-    let taskListShow = document.querySelector(".todo-list-item");
-    let localItems = JSON.parse(localStorage.getItem('localItem'));
-
-    if (localItems == null) {
-        taskList = [];
-    } else {
-        taskList = localItems;
-    }
-
-    taskList.forEach((data, index) => {
-        html += `
-            <div class="todo-list">
-                <p class="todo-text">${data}</p>
-                <button class="delete-todo btn" onClick="deleteItem(${index})">
-                    ✖
-                </button>
-            </div>
-        `
-    });
-
-    taskListShow.innerHTML = html;
 }
 
-showList();
+function deleteTask(e) {
+    const item = e.target;
 
-function deleteItem(index) {
-    let localItems = JSON.parse(localStorage.getItem('localItem'));
+    if (item.classList[0] === 'todo-item') {
+        const todo = item.parentElement;
+        removeLocalStorage(todo);
+        todo.remove();
+    }
+}
 
-    taskList.splice(index, 1);
+function saveLocalStorage(todo) {
+    let todos;
+    if (localStorage.getItem('todos') === null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
 
-    localStorage.setItem('localItem', JSON.stringify(taskList));
+    todos.push(todo);
 
-    showList();
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function getLocalStorage() {
+    let todos;
+    if (localStorage.getItem('todos') === null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+
+    todos.forEach(todo => {
+        const todoDiv = document.createElement("div");
+        todoDiv.classList.add("todo");
+
+        const newTodo = document.createElement("li");
+        newTodo.innerHTML = todo;
+        newTodo.classList.add("todo-item");
+
+        todoDiv.appendChild(newTodo);
+
+        todoList.appendChild(todoDiv);
+    })
+}
+
+function removeLocalStorage(todo) {
+    let todos;
+    if (localStorage.getItem('todos') === null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+
+    const todoIndex = todo.children[0].innerText;
+    todos.splice(todos.indexOf(todoIndex), 1);
+
+    localStorage.setItem('todos', JSON.stringify(todos))
 }
