@@ -94,7 +94,7 @@ canvas {
                 input {
                     width: 65%;
                     padding: 0rem .5rem;
-                    font-size: .975rem;
+                    font-size: .95rem;
                     border: none;
                     background-color: transparent;
                     border-bottom: 1.5px solid rgba(255, 255, 255, 0.241);
@@ -102,6 +102,13 @@ canvas {
                     color: #fff;
                     padding-bottom: 2.5px;
                     letter-spacing: .75px;
+                    height: 40px;
+                    transition: all .25s ease;
+
+                    &:focus {
+                        background: rgba(255, 255, 255, 0.256);
+                        border-radius: 15px;
+                    }
 
                     &::placeholder {
                         opacity: .5;
@@ -133,10 +140,17 @@ canvas {
                     .todo {
                         background: transparent;
                         color: rgb(255, 255, 255);
-                        font-size: .975rem;
+                        font-size: .95rem;
                         display: flex;
                         margin-top: 15px;
                         border-bottom: 1.5px solid rgba(255, 255, 255, 0.241);
+                        transition: all .25s ease;
+                        cursor: pointer;
+
+                        &:hover {
+                            background: rgba(255, 255, 255, 0.13);
+                            border-radius: 15px;
+                        }
 
                         li {
                             flex: 1;
@@ -144,7 +158,9 @@ canvas {
                             white-space: nowrap;
                             letter-spacing: .75px;
                             margin: 0rem 0.5rem;
-                            padding-bottom: 2.5px;
+                            height: 35px;
+                            display: flex;
+                            align-items: center;
 
                             &::-webkit-scrollbar {
                                 display: none;
@@ -188,6 +204,14 @@ canvas {
                 align-items: center;
                 gap: 15px;
 
+                img {
+                    -webkit-user-drag: none;
+                    -khtml-user-drag: none;
+                    -moz-user-drag: none;
+                    -o-user-drag: none;
+                    user-drag: none;
+                }
+
                 .temperature {
                     font-size: 4rem;
                     color: #fff;
@@ -195,6 +219,69 @@ canvas {
                 }
             }
 
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+
+        &>div {
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        #left {
+            order: 1;
+            padding-top: 3.5rem;
+
+            .title {
+                display: none;
+            }
+
+            .actual-todo {
+                form {
+                    input {
+                        font-size: .9rem;
+                        padding-bottom: 2px;
+                        letter-spacing: .7px;
+                        height: 30px;
+                    }
+                }
+
+                .todo-container {
+                    .todo-list {
+                        height: 25vh;
+
+                        .todo {
+                            font-size: .9rem;
+                            margin-top: 10px;
+
+                            li {
+                                letter-spacing: .7px;
+                                height: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #middle {
+            .clock {
+                h1 {
+                    font-size: 5rem;
+                }
+            }
+        }
+
+        #right {
+            display: none;
         }
     }
 }

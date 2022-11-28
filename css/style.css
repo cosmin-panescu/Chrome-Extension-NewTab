@@ -90,7 +90,7 @@ canvas {
 .container #left .actual-todo form input {
   width: 65%;
   padding: 0rem 0.5rem;
-  font-size: 0.975rem;
+  font-size: 0.95rem;
   border: none;
   background-color: transparent;
   border-bottom: 1.5px solid rgba(255, 255, 255, 0.241);
@@ -98,6 +98,12 @@ canvas {
   color: #fff;
   padding-bottom: 2.5px;
   letter-spacing: 0.75px;
+  height: 40px;
+  transition: all 0.25s ease;
+}
+.container #left .actual-todo form input:focus {
+  background: rgba(255, 255, 255, 0.256);
+  border-radius: 15px;
 }
 .container #left .actual-todo form input::placeholder {
   opacity: 0.5;
@@ -124,10 +130,16 @@ canvas {
 .container #left .actual-todo .todo-container .todo-list .todo {
   background: transparent;
   color: rgb(255, 255, 255);
-  font-size: 0.975rem;
+  font-size: 0.95rem;
   display: flex;
   margin-top: 15px;
   border-bottom: 1.5px solid rgba(255, 255, 255, 0.241);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.container #left .actual-todo .todo-container .todo-list .todo:hover {
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 15px;
 }
 .container #left .actual-todo .todo-container .todo-list .todo li {
   flex: 1;
@@ -135,7 +147,9 @@ canvas {
   white-space: nowrap;
   letter-spacing: 0.75px;
   margin: 0rem 0.5rem;
-  padding-bottom: 2.5px;
+  height: 35px;
+  display: flex;
+  align-items: center;
 }
 .container #left .actual-todo .todo-container .todo-list .todo li::-webkit-scrollbar {
   display: none;
@@ -169,8 +183,59 @@ canvas {
   align-items: center;
   gap: 15px;
 }
+.container #right #weather .weather-info img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
 .container #right #weather .weather-info .temperature {
   font-size: 4rem;
   color: #fff;
   font-weight: bolder;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .container > div {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+  }
+  .container #left {
+    order: 1;
+    padding-top: 3.5rem;
+  }
+  .container #left .title {
+    display: none;
+  }
+  .container #left .actual-todo form input {
+    font-size: 0.9rem;
+    padding-bottom: 2px;
+    letter-spacing: 0.7px;
+    height: 30px;
+  }
+  .container #left .actual-todo .todo-container .todo-list {
+    height: 25vh;
+  }
+  .container #left .actual-todo .todo-container .todo-list .todo {
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  .container #left .actual-todo .todo-container .todo-list .todo li {
+    letter-spacing: 0.7px;
+    height: 30px;
+  }
+  .container #middle .clock h1 {
+    font-size: 5rem;
+  }
+  .container #right {
+    display: none;
+  }
 }/*# sourceMappingURL=style.css.map */
