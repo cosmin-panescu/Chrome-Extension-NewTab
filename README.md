@@ -1,5 +1,7 @@
 # Chrome-Extension-NewTab
 
+![Untitled](https://user-images.githubusercontent.com/107345473/204476650-6fed09b2-3319-4164-b3e3-9ae8735c06fc.png)
+
 Chrome Extension (New Tab Dashboard), using HTML, SASS/CSS and JavaScript.
 
 The extension is divided into 3 parts:
